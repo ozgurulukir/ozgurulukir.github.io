@@ -102,6 +102,12 @@ h2 { font-size: 1.35rem; border-bottom: 1px solid var(--border); padding-bottom:
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.card:hover,
+.card:focus-within {
+  border-color: var(--accent);
+  transform: translateY(-2px);
 }
 .card h3 { margin: 0; font-size: 1.05rem; }
 .card p { margin: 0; color: var(--muted); flex-grow: 1; }
