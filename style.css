@@ -63,6 +63,28 @@ a:focus-visible, .skip-link:focus-visible {
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
+.external-icon {
+  display: inline-block;
+  vertical-align: baseline;
+  margin-left: 0.25em;
+  opacity: 0.7;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+a:hover .external-icon,
+a:focus-visible .external-icon,
+.card:hover .external-icon,
+.card:focus-within .external-icon {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: no-preference) {
+  a:hover .external-icon,
+  a:focus-visible .external-icon,
+  .card:hover .external-icon,
+  .card:focus-within .external-icon {
+    transform: translate(1px, -1px);
+  }
+}
+
 .site-header nav {
   display: flex;
   align-items: center;
