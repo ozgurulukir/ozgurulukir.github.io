@@ -108,6 +108,7 @@ a:focus-visible .external-icon,
 .tagline { color: var(--muted); margin: 0; }
 
 section { padding: 1.5rem 0; }
+section[id] { scroll-margin-top: 1.5rem; }
 h2 { font-size: 1.35rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
 
 /* Projects: 1 column on mobile, 2 from 640px */
@@ -206,6 +207,15 @@ h2 { font-size: 1.35rem; border-bottom: 1px solid var(--border); padding-bottom:
   color: var(--text);
   border-color: var(--muted);
   background-color: var(--card);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .copy-btn {
+    transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease, transform 0.1s ease;
+  }
+  .copy-btn:active {
+    transform: scale(0.95);
+  }
 }
 
 .copy-btn:focus-visible {
