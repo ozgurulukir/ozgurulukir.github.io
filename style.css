@@ -257,6 +257,13 @@ h2 { font-size: 1.35rem; border-bottom: 1px solid var(--border); padding-bottom:
   transform: translateX(-50%) translateY(0);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .copy-btn,
+  .copy-feedback {
+    transition: none;
+  }
+}
+
 .site-footer {
   text-align: center;
   color: var(--muted);
