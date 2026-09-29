@@ -97,9 +97,39 @@
     <section id="contact" aria-labelledby="contact-title">
       <h2 id="contact-title">Contact</h2>
       <ul class="contact-list">
-        <li><a href="mailto:ozgur.ulukir@gmail.com">ozgur.ulukir@gmail.com</a></li>
+        <li class="contact-item">
+          <a href="mailto:ozgur.ulukir@gmail.com">ozgur.ulukir@gmail.com</a>
+          <button type="button" class="copy-btn" id="copy-email-btn" aria-label="Copy email address" title="Copy email address">
+            <svg class="copy-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25v-7.5Z"/><path fill="currentColor" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25v-7.5Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25h-7.5Z"/></svg>
+            <span class="copy-feedback" id="copy-feedback">Copied!</span>
+          </button>
+          <span class="sr-only" aria-live="polite" id="copy-status"></span>
+        </li>
         <li><a href="https://github.com/ozgurulukir" target="_blank" rel="noopener noreferrer">github.com/ozgurulukir <svg class="external-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path fill="currentColor" d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h3.646a.75.75 0 0 1 .75.75v3.646a.75.75 0 0 1-1.28.53L12.53 4.78l-4.75 4.75a.75.75 0 0 1-1.06-1.06l4.75-4.75-1.14-1.14a.75.75 0 0 1 .53-1.28Z"/></svg><span class="sr-only">(opens in new tab)</span></a></li>
       </ul>
+      <script>
+        (function() {
+          var btn = document.getElementById('copy-email-btn');
+          var status = document.getElementById('copy-status');
+          var timeout;
+          if (btn) {
+            btn.addEventListener('click', function() {
+              var email = 'ozgur.ulukir@gmail.com';
+              navigator.clipboard.writeText(email).then(function() {
+                btn.classList.add('copied');
+                if (status) status.textContent = 'Email address copied to clipboard';
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                  btn.classList.remove('copied');
+                  if (status) status.textContent = '';
+                }, 2000);
+              }).catch(function() {
+                if (status) status.textContent = 'Failed to copy email address';
+              });
+            });
+          }
+        })();
+      </script>
     </section>
   </main>
 
