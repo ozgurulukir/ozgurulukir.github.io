@@ -115,6 +115,10 @@
           if (btn) {
             btn.addEventListener('click', function() {
               var email = 'ozgur.ulukir@gmail.com';
+              if (!navigator.clipboard || !navigator.clipboard.writeText) {
+                if (status) status.textContent = 'Copying not supported on this browser';
+                return;
+              }
               navigator.clipboard.writeText(email).then(function() {
                 btn.classList.add('copied');
                 if (status) status.textContent = 'Email address copied to clipboard';
