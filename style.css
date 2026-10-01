@@ -252,6 +252,8 @@ h2 { font-size: 1.35rem; border-bottom: 1px solid var(--border); padding-bottom:
   border-color: var(--accent);
 }
 
+.copy-btn:hover .copy-feedback,
+.copy-btn:focus-visible .copy-feedback,
 .copy-btn.copied .copy-feedback {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
