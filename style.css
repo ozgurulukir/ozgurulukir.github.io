@@ -217,6 +217,18 @@ h2 { font-size: 1.35rem; border-bottom: 1px solid var(--border); padding-bottom:
   display: block;
 }
 
+.check-icon {
+  display: none;
+}
+
+.copy-btn.copied .copy-icon {
+  display: none;
+}
+
+.copy-btn.copied .check-icon {
+  display: block;
+}
+
 .copy-feedback {
   position: absolute;
   left: 50%;
