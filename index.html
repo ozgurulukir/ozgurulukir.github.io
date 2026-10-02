@@ -99,9 +99,9 @@
       <ul class="contact-list">
         <li class="contact-item">
           <a href="mailto:ozgur.ulukir@gmail.com">ozgur.ulukir@gmail.com</a>
-          <button type="button" class="copy-btn" id="copy-email-btn" aria-label="Copy email address" title="Copy email address">
+          <button type="button" class="copy-btn" id="copy-email-btn" aria-label="Copy email address">
             <svg class="copy-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25v-7.5Z"/><path fill="currentColor" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25v-7.5Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25h-7.5Z"/></svg>
-            <span class="copy-feedback" id="copy-feedback">Copied!</span>
+            <span class="copy-feedback" id="copy-feedback">Copy email</span>
           </button>
           <span class="sr-only" aria-live="polite" id="copy-status"></span>
         </li>
@@ -111,21 +111,59 @@
         (function() {
           var btn = document.getElementById('copy-email-btn');
           var status = document.getElementById('copy-status');
+          var feedback = document.getElementById('copy-feedback');
           var timeout;
+
+          function setCopiedState(success) {
+            if (success) {
+              if (feedback) feedback.textContent = 'Copied!';
+              btn.classList.add('copied');
+              if (status) status.textContent = 'Email address copied to clipboard';
+            } else {
+              if (feedback) feedback.textContent = 'Failed to copy';
+              btn.classList.add('copied');
+              if (status) status.textContent = 'Failed to copy email address';
+            }
+            clearTimeout(timeout);
+            timeout = setTimeout(function() {
+              btn.classList.remove('copied');
+              if (feedback) feedback.textContent = 'Copy email';
+              if (status) status.textContent = '';
+            }, 2000);
+          }
+
+          function fallbackCopyText(text) {
+            var textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.top = '0';
+            textArea.style.left = '0';
+            textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            var successful = false;
+            try {
+              successful = document.execCommand('copy');
+            } catch (err) {
+              successful = false;
+            }
+            document.body.removeChild(textArea);
+            setCopiedState(successful);
+          }
+
           if (btn) {
             btn.addEventListener('click', function() {
               var email = 'ozgur.ulukir@gmail.com';
-              navigator.clipboard.writeText(email).then(function() {
-                btn.classList.add('copied');
-                if (status) status.textContent = 'Email address copied to clipboard';
-                clearTimeout(timeout);
-                timeout = setTimeout(function() {
-                  btn.classList.remove('copied');
-                  if (status) status.textContent = '';
-                }, 2000);
-              }).catch(function() {
-                if (status) status.textContent = 'Failed to copy email address';
-              });
+              if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(email).then(function() {
+                  setCopiedState(true);
+                }).catch(function() {
+                  fallbackCopyText(email);
+                });
+              } else {
+                fallbackCopyText(email);
+              }
             });
           }
         })();
