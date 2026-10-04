@@ -539,6 +539,14 @@ h2::after {
 }
 
 .post-content h2 { margin-top: 2rem; }
+.post-content hr {
+  border: none;
+  border-top: 2px dashed var(--border);
+  margin: 2.5rem 0;
+}
+.post-content ol, .post-content ul { padding-left: 1.5rem; }
+.post-content li { margin: 0.4rem 0; }
+.post-content li::marker { font-weight: 700; color: var(--accent); }
 .post-content a {
   text-decoration: underline;
   text-underline-offset: 2px;
