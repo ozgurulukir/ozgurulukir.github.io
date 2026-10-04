@@ -6,6 +6,11 @@
   <title>{% if title %}{{ title }} — Ozgur Ulukir{% else %}Ozgur Ulukir — Developer{% endif %}</title>
   {% if description %}<meta name="description" content="{{ description }}">{% else %}<meta name="description" content="Ozgur Ulukir — developer building developer tools, CLI utilities, and AI agent workflows. Featured projects, skills, and contact.">{% endif %}
   <link rel="canonical" href="https://ozgurulukir.github.io{{ page.url }}">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2ead8">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#17130e">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/style.css">
 </head>
@@ -14,7 +19,7 @@
 
   <header class="site-header">
     <nav aria-label="Primary">
-      <a class="brand" href="/">ozgurulukir</a>
+      <a class="brand" href="/"><svg class="star" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M8 0l1.9 5.1 5.4.3-4.2 3.5 1.4 5.3L8 11.3l-4.5 2.9 1.4-5.3L.7 5.4l5.4-.3L8 0z"/></svg>ozgurulukir</a>
       <ul class="nav-list">
         <li><a href="/#about">About</a></li>
         <li><a href="/#projects">Projects</a></li>
