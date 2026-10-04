@@ -1,222 +1,187 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ozgur Ulukir — Developer</title>
-  <meta name="description" content="Ozgur Ulukir — developer building developer tools, CLI utilities, and AI agent workflows. Featured projects, skills, and contact.">
-  <meta property="og:type" content="website">
-  <link rel="canonical" href="https://ozgurulukir.github.io/">
-  <meta property="og:url" content="https://ozgurulukir.github.io/">
-  <meta property="og:title" content="Ozgur Ulukir — Developer">
-  <meta property="og:description" content="Developer building developer tools, CLI utilities, and AI agent workflows.">
-  <meta property="og:image" content="https://avatars.githubusercontent.com/u/8301000?v=4">
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0d1117">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="stylesheet" href="/style.css">
-</head>
-<body>
+---
+layout: base.html
+description: Ozgur Ulukir — developer building developer tools, CLI utilities, and AI agent workflows. Featured projects, skills, and contact.
+---
   <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position: absolute;" aria-hidden="true">
     <symbol id="external-icon" viewBox="0 0 16 16">
       <path fill="currentColor" d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h3.646a.75.75 0 0 1 .75.75v3.646a.75.75 0 0 1-1.28.53L12.53 4.78l-4.75 4.75a.75.75 0 0 1-1.06-1.06l4.75-4.75-1.14-1.14a.75.75 0 0 1 .53-1.28Z"/>
     </symbol>
   </svg>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <nav aria-label="Primary">
-      <a class="brand" href="/">ozgurulukir</a>
-      <ul class="nav-list">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <section class="hero" aria-labelledby="hero-name">
+    <img class="avatar" src="https://avatars.githubusercontent.com/u/8301000?v=4"
+         alt="Portrait of Ozgur Ulukir" width="96" height="96">
+    <h1 id="hero-name">Ozgur Ulukir</h1>
+    <p class="tagline">I build developer tools, CLI utilities, and AI agent workflows.</p>
+  </section>
 
-  <main id="main">
-    <section class="hero" aria-labelledby="hero-name">
-      <img class="avatar" src="https://avatars.githubusercontent.com/u/8301000?v=4"
-           alt="Portrait of Ozgur Ulukir" width="96" height="96">
-      <h1 id="hero-name">Ozgur Ulukir</h1>
-      <p class="tagline">I build developer tools, CLI utilities, and AI agent workflows.</p>
-    </section>
+  <section id="about" aria-labelledby="about-title">
+    <h2 id="about-title">About</h2>
+    <p>I'm a developer focused on developer tools, CLI utilities, and AI agent
+       workflows. I like building small, practical tools that make daily
+       development smoother — from file managers to agent rule syncers. My stack
+       spans Go, Zig, Crystal, Ruby, JavaScript, HTML/CSS, and Docker.</p>
+  </section>
 
-    <section id="about" aria-labelledby="about-title">
-      <h2 id="about-title">About</h2>
-      <p>I'm a developer focused on developer tools, CLI utilities, and AI agent
-         workflows. I like building small, practical tools that make daily
-         development smoother — from file managers to agent rule syncers. My stack
-         spans Go, Zig, Crystal, Ruby, JavaScript, HTML/CSS, and Docker.</p>
-    </section>
+  <section id="projects" aria-labelledby="projects-title">
+    <h2 id="projects-title">Featured Projects</h2>
+    <ul class="projects">
+      <li>
+        <article class="card">
+          <h3><a href="https://github.com/ozgurulukir/fff.cr" target="_blank" rel="noopener noreferrer">fff.cr <svg class="external-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><use href="#external-icon"></use></svg><span class="sr-only">(opens in new tab)</span></a></h3>
+          <p>A simple file manager written in Crystal.</p>
+          <span class="badge">Crystal</span>
+        </article>
+      </li>
+      <li>
+        <article class="card">
+          <h3><a href="https://github.com/ozgurulukir/agent-rule-sync" target="_blank" rel="noopener noreferrer">agent-rule-sync <svg class="external-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><use href="#external-icon"></use></svg><span class="sr-only">(opens in new tab)</span></a></h3>
+          <p>PKGBUILD-based Agent Rule Manager.</p>
+          <span class="badge">Ruby</span>
+        </article>
+      </li>
+      <li>
+        <article class="card">
+          <h3><a href="https://github.com/ozgurulukir/opencode-agents-sync" target="_blank" rel="noopener noreferrer">opencode-agents-sync <svg class="external-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><use href="#external-icon"></use></svg><span class="sr-only">(opens in new tab)</span></a></h3>
+          <p>OpenCode/MiMo Code plugin that updates project-level AGENTS.md after auto-compaction.</p>
+          <span class="badge">JavaScript</span>
+        </article>
+      </li>
+      <li>
+        <article class="card">
+          <h3><a href="https://github.com/ozgurulukir/ganttpro" target="_blank" rel="noopener noreferrer">ganttpro <svg class="external-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><use href="#external-icon"></use></svg><span class="sr-only">(opens in new tab)</span></a></h3>
+          <p>Gantt chart tool.</p>
+          <span class="badge">HTML</span>
+        </article>
+      </li>
+    </ul>
+  </section>
 
-    <section id="projects" aria-labelledby="projects-title">
-      <h2 id="projects-title">Featured Projects</h2>
-      <ul class="projects">
-        <li>
-          <article class="card">
-            <h3><a href="https://github.com/ozgurulukir/fff.cr" target="_blank" rel="noopener noreferrer">fff.cr <svg class="external-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><use href="#external-icon"></use></svg><span class="sr-only">(opens in new tab)</span></a></h3>
-            <p>A simple file manager written in Crystal.</p>
-            <span class="badge">Crystal</span>
-          </article>
-        </li>
-        <li>
-          <article class="card">
-            <h3><a href="https://github.com/ozgurulukir/agent-rule-sync" target="_blank" rel="noopener noreferrer">agent-rule-sync <svg class="external-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><use href="#external-icon"></use></svg><span class="sr-only">(opens in new tab)</span></a></h3>
-            <p>PKGBUILD-based Agent Rule Manager.</p>
-            <span class="badge">Ruby</span>
-          </article>
-        </li>
-        <li>
-          <article class="card">
-            <h3><a href="https://github.com/ozgurulukir/opencode-agents-sync" target="_blank" rel="noopener noreferrer">opencode-agents-sync <svg class="external-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><use href="#external-icon"></use></svg><span class="sr-only">(opens in new tab)</span></a></h3>
-            <p>OpenCode/MiMo Code plugin that updates project-level AGENTS.md after auto-compaction.</p>
-            <span class="badge">JavaScript</span>
-          </article>
-        </li>
-        <li>
-          <article class="card">
-            <h3><a href="https://github.com/ozgurulukir/ganttpro" target="_blank" rel="noopener noreferrer">ganttpro <svg class="external-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><use href="#external-icon"></use></svg><span class="sr-only">(opens in new tab)</span></a></h3>
-            <p>Gantt chart tool.</p>
-            <span class="badge">HTML</span>
-          </article>
-        </li>
-      </ul>
-    </section>
+  <section id="skills" aria-labelledby="skills-title">
+    <h2 id="skills-title">Skills</h2>
+    <ul class="tags">
+      <li>Go</li>
+      <li>Zig</li>
+      <li>Crystal</li>
+      <li>Ruby</li>
+      <li>JavaScript</li>
+      <li>HTML/CSS</li>
+      <li>Docker</li>
+    </ul>
+  </section>
 
-    <section id="skills" aria-labelledby="skills-title">
-      <h2 id="skills-title">Skills</h2>
-      <ul class="tags">
-        <li>Go</li>
-        <li>Zig</li>
-        <li>Crystal</li>
-        <li>Ruby</li>
-        <li>JavaScript</li>
-        <li>HTML/CSS</li>
-        <li>Docker</li>
-      </ul>
-    </section>
+  <section id="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">Contact</h2>
+    <ul class="contact-list">
+      <li class="contact-item">
+        <a href="mailto:ozgur.ulukir@gmail.com">ozgur.ulukir@gmail.com</a>
+        <button type="button" class="copy-btn" id="copy-email-btn" aria-label="Copy email address">
+          <svg class="copy-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25v-7.5Z"/><path fill="currentColor" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25v-7.5Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25h-7.5Z"/></svg>
+          <svg class="check-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+          <span class="copy-feedback" id="copy-feedback">Copy email</span>
+        </button>
+        <span class="sr-only" aria-live="polite" id="copy-status"></span>
+      </li>
+      <li><a href="https://github.com/ozgurulukir" target="_blank" rel="noopener noreferrer">github.com/ozgurulukir <svg class="external-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><use href="#external-icon"></use></svg><span class="sr-only">(opens in new tab)</span></a></li>
+    </ul>
+    <script>
+      (function() {
+        var navLinks = Array.from(document.querySelectorAll('.nav-list a')).filter(function(link) {
+          return link.pathname === '/' && link.hash.length > 1;
+        });
+        var sections = navLinks.map(function(link) {
+          return document.getElementById(link.hash.slice(1));
+        }).filter(Boolean);
 
-    <section id="contact" aria-labelledby="contact-title">
-      <h2 id="contact-title">Contact</h2>
-      <ul class="contact-list">
-        <li class="contact-item">
-          <a href="mailto:ozgur.ulukir@gmail.com">ozgur.ulukir@gmail.com</a>
-          <button type="button" class="copy-btn" id="copy-email-btn" aria-label="Copy email address">
-            <svg class="copy-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25v-7.5Z"/><path fill="currentColor" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25v-7.5Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25h-7.5Z"/></svg>
-            <svg class="check-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
-            <span class="copy-feedback" id="copy-feedback">Copy email</span>
-          </button>
-          <span class="sr-only" aria-live="polite" id="copy-status"></span>
-        </li>
-        <li><a href="https://github.com/ozgurulukir" target="_blank" rel="noopener noreferrer">github.com/ozgurulukir <svg class="external-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><use href="#external-icon"></use></svg><span class="sr-only">(opens in new tab)</span></a></li>
-      </ul>
-      <script>
-        (function() {
-          var navLinks = document.querySelectorAll('.nav-list a[href^="#"]');
-          var sections = Array.from(navLinks).map(function(link) {
-            var id = link.getAttribute('href').slice(1);
-            return document.getElementById(id);
-          }).filter(Boolean);
-
-          if ('IntersectionObserver' in window && sections.length > 0) {
-            var activeId = null;
-            function updateActiveNav(id) {
-              if (activeId === id) return;
-              activeId = id;
-              navLinks.forEach(function(link) {
-                if (link.getAttribute('href') === '#' + id) {
-                  link.setAttribute('aria-current', 'true');
-                } else {
-                  link.removeAttribute('aria-current');
-                }
-              });
-            }
-
-            var observer = new IntersectionObserver(function(entries) {
-              entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                  updateActiveNav(entry.target.id);
-                }
-              });
-            }, {
-              rootMargin: '-20% 0px -50% 0px',
-              threshold: 0
-            });
-
-            sections.forEach(function(section) {
-              observer.observe(section);
-            });
-          }
-        })();
-
-        (function() {
-          var btn = document.getElementById('copy-email-btn');
-          var status = document.getElementById('copy-status');
-          var feedback = document.getElementById('copy-feedback');
-          var timeout;
-
-          function setCopiedState(success) {
-            if (success) {
-              if (feedback) feedback.textContent = 'Copied!';
-              btn.classList.add('copied');
-              if (status) status.textContent = 'Email address copied to clipboard';
-            } else {
-              if (feedback) feedback.textContent = 'Failed to copy';
-              btn.classList.add('copied');
-              if (status) status.textContent = 'Failed to copy email address';
-            }
-            clearTimeout(timeout);
-            timeout = setTimeout(function() {
-              btn.classList.remove('copied');
-              if (feedback) feedback.textContent = 'Copy email';
-              if (status) status.textContent = '';
-            }, 2000);
-          }
-
-          function fallbackCopyText(text) {
-            var textArea = document.createElement('textarea');
-            textArea.value = text;
-            textArea.style.position = 'fixed';
-            textArea.style.top = '0';
-            textArea.style.left = '0';
-            textArea.style.opacity = '0';
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            var successful = false;
-            try {
-              successful = document.execCommand('copy');
-            } catch (err) {
-              successful = false;
-            }
-            document.body.removeChild(textArea);
-            setCopiedState(successful);
-          }
-
-          if (btn) {
-            btn.addEventListener('click', function() {
-              var email = 'ozgur.ulukir@gmail.com';
-              if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(email).then(function() {
-                  setCopiedState(true);
-                }).catch(function() {
-                  fallbackCopyText(email);
-                });
+        if ('IntersectionObserver' in window && sections.length > 0) {
+          var activeId = null;
+          function updateActiveNav(id) {
+            if (activeId === id) return;
+            activeId = id;
+            navLinks.forEach(function(link) {
+              if (link.hash === '#' + id) {
+                link.setAttribute('aria-current', 'true');
               } else {
-                fallbackCopyText(email);
+                link.removeAttribute('aria-current');
               }
             });
           }
-        })();
-      </script>
-    </section>
-  </main>
 
-  <footer class="site-footer">
-    <p>© 2026 Ozgur Ulukir · Built with plain HTML &amp; CSS</p>
-  </footer>
-</body>
-</html>
+          var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                updateActiveNav(entry.target.id);
+              }
+            });
+          }, {
+            rootMargin: '-20% 0px -50% 0px',
+            threshold: 0
+          });
+
+          sections.forEach(function(section) {
+            observer.observe(section);
+          });
+        }
+      })();
+
+      (function() {
+        var btn = document.getElementById('copy-email-btn');
+        var status = document.getElementById('copy-status');
+        var feedback = document.getElementById('copy-feedback');
+        var timeout;
+
+        function setCopiedState(success) {
+          if (success) {
+            if (feedback) feedback.textContent = 'Copied!';
+            btn.classList.add('copied');
+            if (status) status.textContent = 'Email address copied to clipboard';
+          } else {
+            if (feedback) feedback.textContent = 'Failed to copy';
+            btn.classList.add('copied');
+            if (status) status.textContent = 'Failed to copy email address';
+          }
+          clearTimeout(timeout);
+          timeout = setTimeout(function() {
+            btn.classList.remove('copied');
+            if (feedback) feedback.textContent = 'Copy email';
+            if (status) status.textContent = '';
+          }, 2000);
+        }
+
+        function fallbackCopyText(text) {
+          var textArea = document.createElement('textarea');
+          textArea.value = text;
+          textArea.style.position = 'fixed';
+          textArea.style.top = '0';
+          textArea.style.left = '0';
+          textArea.style.opacity = '0';
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+          var successful = false;
+          try {
+            successful = document.execCommand('copy');
+          } catch (err) {
+            successful = false;
+          }
+          document.body.removeChild(textArea);
+          setCopiedState(successful);
+        }
+
+        if (btn) {
+          btn.addEventListener('click', function() {
+            var email = 'ozgur.ulukir@gmail.com';
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(email).then(function() {
+                setCopiedState(true);
+              }).catch(function() {
+                fallbackCopyText(email);
+              });
+            } else {
+              fallbackCopyText(email);
+            }
+          });
+        }
+      })();
+    </script>
+  </section>

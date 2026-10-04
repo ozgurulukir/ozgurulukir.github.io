@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if title %}{{ title }} — Ozgur Ulukir{% else %}Ozgur Ulukir — Developer{% endif %}</title>
+  {% if description %}<meta name="description" content="{{ description }}">{% else %}<meta name="description" content="Ozgur Ulukir — developer building developer tools, CLI utilities, and AI agent workflows. Featured projects, skills, and contact.">{% endif %}
+  <link rel="canonical" href="https://ozgurulukir.github.io{{ page.url }}">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav aria-label="Primary">
+      <a class="brand" href="/">ozgurulukir</a>
+      <ul class="nav-list">
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#projects">Projects</a></li>
+        <li><a href="/#skills">Skills</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Ozgur Ulukir · Built with plain HTML &amp; CSS, blog by <a href="https://www.11ty.dev/" target="_blank" rel="noopener noreferrer">Eleventy</a><span class="sr-only">(opens in new tab)</span></p>
+  </footer>
+</body>
+</html>
