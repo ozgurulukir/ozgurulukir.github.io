@@ -10,7 +10,10 @@ eleventyExcludeFromCollections: true
       {%- for post in collections.posts %}
       <li class="post-item">
         <a href="{{ post.url }}">{{ post.data.title }}</a>
-        <time datetime="{{ post.date | isoDate }}">{{ post.date | postDate }}</time>
+        <div class="post-item-meta">
+          <time datetime="{{ post.date | isoDate }}">{{ post.date | postDate }}</time>
+          <span class="post-read-time">· {{ post.templateContent | readingTime: post.data.lang }}</span>
+        </div>
         {%- if post.data.description %}
         <p>{{ post.data.description }}</p>
         {%- endif %}
