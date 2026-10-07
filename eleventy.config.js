@@ -22,6 +22,13 @@ export default function (eleventyConfig) {
     (date) => date.toISOString().slice(0, 10)
   );
 
+  eleventyConfig.addFilter("readingTime", (content, lang = "en") => {
+    const text = (content || "").replace(/<[^>]*>/g, "").trim();
+    const words = text ? text.split(/\s+/).length : 0;
+    const mins = Math.max(1, Math.ceil(words / 200));
+    return lang === "tr" ? `${mins} dk okuma` : `${mins} min read`;
+  });
+
   eleventyConfig.addPassthroughCopy("style.css");
   eleventyConfig.addPassthroughCopy("favicon.svg");
 
