@@ -22,6 +22,14 @@ export default function (eleventyConfig) {
     (date) => date.toISOString().slice(0, 10)
   );
 
+  eleventyConfig.addFilter("readingTime", (content) => {
+    if (!content) return "1 min read";
+    const clean = content.replace(/<[^>]*>/g, " ");
+    const words = clean.trim().split(/\s+/).filter(Boolean).length;
+    const minutes = Math.max(1, Math.ceil(words / 200));
+    return `${minutes} min read`;
+  });
+
   eleventyConfig.addPassthroughCopy("style.css");
   eleventyConfig.addPassthroughCopy("favicon.svg");
 
