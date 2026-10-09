@@ -32,6 +32,55 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("style.css");
   eleventyConfig.addPassthroughCopy("favicon.svg");
 
+  eleventyConfig.amendLibrary("md", (md) => {
+    const defaultLinkOpen =
+      md.renderer.rules.link_open ||
+      function (tokens, idx, options, env, self) {
+        return self.renderToken(tokens, idx, options);
+      };
+
+    md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
+      const href = tokens[idx].attrGet("href");
+      if (href && /^https?:\/\//.test(href)) {
+        tokens[idx].attrSet("target", "_blank");
+        tokens[idx].attrSet("rel", "noopener noreferrer");
+        tokens[idx].isExternal = true;
+      }
+      return defaultLinkOpen(tokens, idx, options, env, self);
+    };
+
+    const defaultLinkClose =
+      md.renderer.rules.link_close ||
+      function (tokens, idx, options, env, self) {
+        return self.renderToken(tokens, idx, options);
+      };
+
+    md.renderer.rules.link_close = function (tokens, idx, options, env, self) {
+      let isExternal = false;
+      for (let i = idx - 1; i >= 0; i--) {
+        if (tokens[i].type === "link_open") {
+          isExternal = Boolean(tokens[i].isExternal);
+          break;
+        }
+      }
+      if (isExternal) {
+        return `<svg class="external-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><use href="#external-icon"></use></svg><span class="sr-only">(opens in new tab)</span>${defaultLinkClose(tokens, idx, options, env, self)}`;
+      }
+      return defaultLinkClose(tokens, idx, options, env, self);
+    };
+
+    const defaultTableOpen =
+      md.renderer.rules.table_open ||
+      function (tokens, idx, options, env, self) {
+        return self.renderToken(tokens, idx, options);
+      };
+
+    md.renderer.rules.table_open = function (tokens, idx, options, env, self) {
+      tokens[idx].attrSet("tabindex", "0");
+      return defaultTableOpen(tokens, idx, options, env, self);
+    };
+  });
+
   return {
     dir: {
       input: ".",
