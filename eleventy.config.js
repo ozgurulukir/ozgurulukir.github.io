@@ -4,6 +4,7 @@ export default function (eleventyConfig) {
   // Bot journal and planning notes are not site content.
   eleventyConfig.ignores.add(".Jules");
   eleventyConfig.ignores.add("_plan");
+  eleventyConfig.ignores.add(".commandcode");
 
   eleventyConfig.addCollection("posts", (collectionApi) =>
     collectionApi
