@@ -658,6 +658,16 @@ h2::after {
 }
 
 .post-back { margin-top: 2.5rem; font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.06em; }
+.back-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .post-back a:hover .back-arrow,
+  .post-back a:focus-visible .back-arrow {
+    transform: translateX(-3px);
+  }
+}
 
 /* ---- 404: struck-through poster numeral ---- */
 

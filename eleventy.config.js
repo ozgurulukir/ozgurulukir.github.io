@@ -80,6 +80,28 @@ export default function (eleventyConfig) {
       tokens[idx].attrSet("tabindex", "0");
       return defaultTableOpen(tokens, idx, options, env, self);
     };
+
+    const defaultFence =
+      md.renderer.rules.fence ||
+      function (tokens, idx, options, env, self) {
+        return self.renderToken(tokens, idx, options);
+      };
+
+    md.renderer.rules.fence = function (tokens, idx, options, env, self) {
+      const rawCode = defaultFence(tokens, idx, options, env, self);
+      return rawCode.replace(/^<pre/i, '<pre tabindex="0"');
+    };
+
+    const defaultCodeBlock =
+      md.renderer.rules.code_block ||
+      function (tokens, idx, options, env, self) {
+        return self.renderToken(tokens, idx, options);
+      };
+
+    md.renderer.rules.code_block = function (tokens, idx, options, env, self) {
+      const rawCode = defaultCodeBlock(tokens, idx, options, env, self);
+      return rawCode.replace(/^<pre/i, '<pre tabindex="0"');
+    };
   });
 
   return {
