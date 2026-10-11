@@ -24,7 +24,7 @@
 
   <header class="site-header">
     <nav aria-label="Primary">
-      <a class="brand" href="/"><svg class="star" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M8 0l1.9 5.1 5.4.3-4.2 3.5 1.4 5.3L8 11.3l-4.5 2.9 1.4-5.3L.7 5.4l5.4-.3L8 0z"/></svg>ozgurulukir</a>
+      <a class="brand" href="/"{% if page.url == "/" or page.url == "" %} aria-current="page"{% endif %}><svg class="star" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M8 0l1.9 5.1 5.4.3-4.2 3.5 1.4 5.3L8 11.3l-4.5 2.9 1.4-5.3L.7 5.4l5.4-.3L8 0z"/></svg>ozgurulukir</a>
       <ul class="nav-list">
         <li><a href="/#about">About</a></li>
         <li><a href="/#projects">Projects</a></li>
