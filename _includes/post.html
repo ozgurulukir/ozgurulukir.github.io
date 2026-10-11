@@ -2,6 +2,13 @@
 layout: base.html
 ---
   <article class="post">
+    <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+      <ol class="breadcrumb-list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li aria-current="page"><span class="sr-only">Current article: </span>{{ title }}</li>
+      </ol>
+    </nav>
     <header class="post-header">
       <h1>{{ title }}</h1>
       <div class="post-meta">
