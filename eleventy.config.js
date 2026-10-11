@@ -7,7 +7,8 @@ function calculateReadingTime(content, lang = "en") {
     return lang === "tr" ? "1 dk okuma" : "1 min read";
   }
 
-  const cached = readingTimeCache.get(content);
+  const key = `${lang}\u0000${content}`;
+  const cached = readingTimeCache.get(key);
   if (cached !== undefined) {
     return cached;
   }
@@ -19,8 +20,11 @@ function calculateReadingTime(content, lang = "en") {
   for (let i = 0; i < content.length; i++) {
     const code = content.charCodeAt(i);
     if (code === 60) { // '<'
+      // Keep any in-progress word intact across tags: the previous regex
+      // filter (`replace(/<[^>]*>/g, "")`) concatenated words separated only
+      // by tags (e.g. "word.<br>Word"), so splitting at '<' would change the
+      // published reading-time output. See #22.
       inTag = true;
-      if (inWord) inWord = false;
     } else if (code === 62) { // '>'
       inTag = false;
     } else if (!inTag) {
@@ -37,7 +41,7 @@ function calculateReadingTime(content, lang = "en") {
 
   const mins = Math.max(1, Math.ceil(wordCount / 200));
   const result = lang === "tr" ? `${mins} dk okuma` : `${mins} min read`;
-  readingTimeCache.set(content, result);
+  readingTimeCache.set(key, result);
   return result;
 }
 
