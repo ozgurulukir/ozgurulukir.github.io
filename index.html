@@ -149,26 +149,6 @@ description: Ozgur Ulukir — developer building developer tools, CLI utilities,
           }, 2000);
         }
 
-        function fallbackCopyText(text) {
-          var textArea = document.createElement('textarea');
-          textArea.value = text;
-          textArea.style.position = 'fixed';
-          textArea.style.top = '0';
-          textArea.style.left = '0';
-          textArea.style.opacity = '0';
-          document.body.appendChild(textArea);
-          textArea.focus();
-          textArea.select();
-          var successful = false;
-          try {
-            successful = document.execCommand('copy');
-          } catch (err) {
-            successful = false;
-          }
-          document.body.removeChild(textArea);
-          setCopiedState(successful);
-        }
-
         if (btn) {
           btn.addEventListener('click', function() {
             var email = 'ozgur.ulukir@gmail.com';
@@ -176,10 +156,10 @@ description: Ozgur Ulukir — developer building developer tools, CLI utilities,
               navigator.clipboard.writeText(email).then(function() {
                 setCopiedState(true);
               }).catch(function() {
-                fallbackCopyText(email);
+                setCopiedState(false);
               });
             } else {
-              fallbackCopyText(email);
+              setCopiedState(false);
             }
           });
         }
