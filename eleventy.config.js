@@ -1,5 +1,46 @@
 import { DateTime } from "luxon";
 
+const readingTimeCache = new Map();
+
+function calculateReadingTime(content, lang = "en") {
+  if (!content) {
+    return lang === "tr" ? "1 dk okuma" : "1 min read";
+  }
+
+  const cached = readingTimeCache.get(content);
+  if (cached !== undefined) {
+    return cached;
+  }
+
+  let wordCount = 0;
+  let inTag = false;
+  let inWord = false;
+
+  for (let i = 0; i < content.length; i++) {
+    const code = content.charCodeAt(i);
+    if (code === 60) { // '<'
+      inTag = true;
+      if (inWord) inWord = false;
+    } else if (code === 62) { // '>'
+      inTag = false;
+    } else if (!inTag) {
+      if (code <= 32) {
+        if (inWord) inWord = false;
+      } else {
+        if (!inWord) {
+          wordCount++;
+          inWord = true;
+        }
+      }
+    }
+  }
+
+  const mins = Math.max(1, Math.ceil(wordCount / 200));
+  const result = lang === "tr" ? `${mins} dk okuma` : `${mins} min read`;
+  readingTimeCache.set(content, result);
+  return result;
+}
+
 export default function (eleventyConfig) {
   // Bot journal and planning notes are not site content.
   eleventyConfig.ignores.add(".Jules");
@@ -23,12 +64,9 @@ export default function (eleventyConfig) {
     (date) => date.toISOString().slice(0, 10)
   );
 
-  eleventyConfig.addFilter("readingTime", (content, lang = "en") => {
-    const text = (content || "").replace(/<[^>]*>/g, "").trim();
-    const words = text ? text.split(/\s+/).length : 0;
-    const mins = Math.max(1, Math.ceil(words / 200));
-    return lang === "tr" ? `${mins} dk okuma` : `${mins} min read`;
-  });
+  eleventyConfig.addFilter("readingTime", (content, lang = "en") =>
+    calculateReadingTime(content, lang)
+  );
 
   eleventyConfig.addPassthroughCopy("style.css");
   eleventyConfig.addPassthroughCopy("favicon.svg");
