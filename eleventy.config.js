@@ -88,8 +88,12 @@ export default function (eleventyConfig) {
       };
 
     md.renderer.rules.fence = function (tokens, idx, options, env, self) {
-      tokens[idx].attrSet("tabindex", "0");
-      return defaultFence(tokens, idx, options, env, self);
+      const html = defaultFence(tokens, idx, options, env, self);
+      // markdown-it's default renderers apply token attrs to <code>, not the
+      // scrollable <pre> container — put tabindex on the <pre> so the
+      // :focus-visible styling in style.css (.post-content pre:focus-visible)
+      // applies. Anchor to the string start: patch only the opening tag.
+      return html.replace(/^<pre([ >])/, '<pre tabindex="0"$1');
     };
 
     const defaultCodeBlock =
@@ -99,8 +103,8 @@ export default function (eleventyConfig) {
       };
 
     md.renderer.rules.code_block = function (tokens, idx, options, env, self) {
-      tokens[idx].attrSet("tabindex", "0");
-      return defaultCodeBlock(tokens, idx, options, env, self);
+      const html = defaultCodeBlock(tokens, idx, options, env, self);
+      return html.replace(/^<pre([ >])/, '<pre tabindex="0"$1');
     };
   });
 
