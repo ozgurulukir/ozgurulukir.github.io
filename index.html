@@ -87,15 +87,15 @@ description: Ozgur Ulukir — developer building developer tools, CLI utilities,
     </ul>
     <script>
       (function() {
-        var navLinks = Array.from(document.querySelectorAll('.nav-list a')).filter(function(link) {
+        const navLinks = Array.from(document.querySelectorAll('.nav-list a')).filter(function(link) {
           return link.pathname === '/' && link.hash.length > 1;
         });
-        var sections = navLinks.map(function(link) {
+        const sections = navLinks.map(function(link) {
           return document.getElementById(link.hash.slice(1));
         }).filter(Boolean);
 
         if ('IntersectionObserver' in window && sections.length > 0) {
-          var activeId = null;
+          let activeId = null;
           function updateActiveNav(id) {
             if (activeId === id) return;
             activeId = id;
@@ -108,7 +108,7 @@ description: Ozgur Ulukir — developer building developer tools, CLI utilities,
             });
           }
 
-          var observer = new IntersectionObserver(function(entries) {
+          const observer = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
               if (entry.isIntersecting) {
                 updateActiveNav(entry.target.id);
@@ -126,10 +126,10 @@ description: Ozgur Ulukir — developer building developer tools, CLI utilities,
       })();
 
       (function() {
-        var btn = document.getElementById('copy-email-btn');
-        var status = document.getElementById('copy-status');
-        var feedback = document.getElementById('copy-feedback');
-        var timeout;
+        const btn = document.getElementById('copy-email-btn');
+        const status = document.getElementById('copy-status');
+        const feedback = document.getElementById('copy-feedback');
+        let timeout;
 
         function setCopiedState(success) {
           if (success) {
@@ -150,7 +150,7 @@ description: Ozgur Ulukir — developer building developer tools, CLI utilities,
         }
 
         function fallbackCopyText(text) {
-          var textArea = document.createElement('textarea');
+          const textArea = document.createElement('textarea');
           textArea.value = text;
           textArea.style.position = 'fixed';
           textArea.style.top = '0';
@@ -159,7 +159,7 @@ description: Ozgur Ulukir — developer building developer tools, CLI utilities,
           document.body.appendChild(textArea);
           textArea.focus();
           textArea.select();
-          var successful = false;
+          let successful = false;
           try {
             successful = document.execCommand('copy');
           } catch (err) {
@@ -171,7 +171,7 @@ description: Ozgur Ulukir — developer building developer tools, CLI utilities,
 
         if (btn) {
           btn.addEventListener('click', function() {
-            var email = 'ozgur.ulukir@gmail.com';
+            const email = 'ozgur.ulukir@gmail.com';
             if (navigator.clipboard && navigator.clipboard.writeText) {
               navigator.clipboard.writeText(email).then(function() {
                 setCopiedState(true);
