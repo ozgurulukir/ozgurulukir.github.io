@@ -3,8 +3,12 @@ layout: base.html
 title: 404 — Page not found
 permalink: /404.html
 ---
-  <div class="notfound">
+  <section class="notfound" aria-labelledby="notfound-title">
     <h1>404</h1>
-    <p>Page not found.</p>
-    <p><a href="/"><span aria-hidden="true">←</span> Back home</a></p>
-  </div>
+    <h2 id="notfound-title" class="notfound-heading">Page Not Found</h2>
+    <p class="notfound-desc">The page you were looking for might have been moved, renamed, or doesn't exist.</p>
+    <div class="notfound-actions">
+      <a href="/" class="notfound-btn primary"><span aria-hidden="true">←</span> Return Home</a>
+      <a href="/blog/" class="notfound-btn secondary">Browse Blog <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
