@@ -50,6 +50,7 @@ export default function (eleventyConfig) {
   eleventyConfig.ignores.add(".Jules");
   eleventyConfig.ignores.add("_plan");
   eleventyConfig.ignores.add(".commandcode");
+  eleventyConfig.ignores.add(".Enchanter");
 
   eleventyConfig.addCollection("posts", (collectionApi) =>
     collectionApi
