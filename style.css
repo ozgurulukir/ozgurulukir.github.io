@@ -97,6 +97,11 @@ body {
   }
 }
 
+/* Focus styling */
+main:focus {
+  outline: none;
+}
+
 /* Visible focus for keyboard users */
 a:focus-visible, .skip-link:focus-visible,
 .copy-btn:focus-visible,
@@ -663,6 +668,63 @@ h2::after {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
+.code-block-wrapper {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-block-wrapper pre {
+  margin: 0;
+}
+
+.code-copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--border);
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  z-index: 5;
+}
+
+.code-copy-btn:hover,
+.code-copy-btn:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 3px 3px 0 var(--accent);
+  background: var(--paper);
+}
+
+.code-copy-btn.copied {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--paper);
+}
+
+.code-copy-btn .check-icon {
+  display: none;
+}
+
+.code-copy-btn.copied .copy-icon {
+  display: none;
+}
+
+.code-copy-btn.copied .check-icon {
+  display: block;
+}
+
 .post-content pre {
   background: var(--paper);
   border: 2px solid var(--border);
