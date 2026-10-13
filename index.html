@@ -147,6 +147,7 @@ description: Ozgur Ulukir — developer building developer tools, CLI utilities,
           timeout = setTimeout(function() {
             btn.classList.remove('copied');
             if (feedback) feedback.textContent = 'Copy email';
+            btn.setAttribute('aria-label', 'Copy email address');
             if (status) status.textContent = '';
             btn.setAttribute('aria-label', 'Copy email address');
           }, 2000);

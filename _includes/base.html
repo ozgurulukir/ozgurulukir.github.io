@@ -22,7 +22,7 @@
   </svg>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
+  <header class="site-header" id="top">
     <nav aria-label="Primary">
       <a class="brand" href="/"{% if page.url == "/" or page.url == "" %} aria-current="page"{% endif %}><svg class="star" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M8 0l1.9 5.1 5.4.3-4.2 3.5 1.4 5.3L8 11.3l-4.5 2.9 1.4-5.3L.7 5.4l5.4-.3L8 0z"/></svg>ozgurulukir</a>
       <ul class="nav-list">
@@ -40,7 +40,10 @@
   </main>
 
   <footer class="site-footer">
-    <p>© 2026 Ozgur Ulukir · Built with plain HTML &amp; CSS, blog by <a href="https://www.11ty.dev/" target="_blank" rel="noopener noreferrer">Eleventy <svg class="external-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><use href="#external-icon"></use></svg><span class="sr-only">(opens in new tab)</span></a></p>
+    <div class="footer-content">
+      <p>© 2026 Ozgur Ulukir · Built with plain HTML &amp; CSS, blog by <a href="https://www.11ty.dev/" target="_blank" rel="noopener noreferrer">Eleventy <svg class="external-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><use href="#external-icon"></use></svg><span class="sr-only">(opens in new tab)</span></a></p>
+      <a href="#top" class="back-to-top" aria-label="Back to top of page">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
   </footer>
 </body>
 </html>
