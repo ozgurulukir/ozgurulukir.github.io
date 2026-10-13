@@ -784,7 +784,7 @@ h2::after {
 .notfound-btn.primary:focus-visible {
   text-decoration: none;
   background: var(--accent);
-  color: #ffffff;
+  color: var(--bg);
   box-shadow: 6px 6px 0 var(--border);
 }
 .notfound-btn.secondary {
