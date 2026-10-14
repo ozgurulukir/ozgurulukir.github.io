@@ -152,6 +152,22 @@ description: Ozgur Ulukir — developer building developer tools, CLI utilities,
           }, 2000);
         }
 
+        function fallbackCopyText(text, callback) {
+          try {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+            const successful = document.execCommand('copy');
+            document.body.removeChild(textarea);
+            callback(successful);
+          } catch (err) {
+            callback(false);
+          }
+        }
+
         if (btn) {
           btn.addEventListener('click', function() {
             const email = 'ozgur.ulukir@gmail.com';
@@ -159,10 +175,10 @@ description: Ozgur Ulukir — developer building developer tools, CLI utilities,
               navigator.clipboard.writeText(email).then(function() {
                 setCopiedState(true);
               }).catch(function() {
-                setCopiedState(false);
+                fallbackCopyText(email, setCopiedState);
               });
             } else {
-              setCopiedState(false);
+              fallbackCopyText(email, setCopiedState);
             }
           });
         }
