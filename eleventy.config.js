@@ -121,6 +121,7 @@ export default function (eleventyConfig) {
 
     md.renderer.rules.table_open = function (tokens, idx, options, env, self) {
       tokens[idx].attrSet("tabindex", "0");
+      tokens[idx].attrSet("aria-label", "Scrollable data table");
       return defaultTableOpen(tokens, idx, options, env, self);
     };
 
