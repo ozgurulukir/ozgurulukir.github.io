@@ -105,6 +105,9 @@ main:focus {
 /* Visible focus for keyboard users */
 a:focus-visible, .skip-link:focus-visible,
 .copy-btn:focus-visible,
+.code-copy-btn:focus-visible,
+.notfound-btn:focus-visible,
+.back-to-top:focus-visible,
 .post-content table:focus-visible,
 .post-content pre:focus-visible {
   outline: 3px solid var(--accent);
