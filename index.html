@@ -94,6 +94,19 @@ description: Ozgur Ulukir — developer building developer tools, CLI utilities,
           return document.getElementById(link.hash.slice(1));
         }).filter(Boolean);
 
+        navLinks.forEach(function(link) {
+          link.addEventListener('click', function(e) {
+            const targetId = link.hash.slice(1);
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+              if (!targetEl.hasAttribute('tabindex')) {
+                targetEl.setAttribute('tabindex', '-1');
+              }
+              targetEl.focus({ preventScroll: true });
+            }
+          });
+        });
+
         if ('IntersectionObserver' in window && sections.length > 0) {
           let activeId = null;
           function updateActiveNav(id) {
