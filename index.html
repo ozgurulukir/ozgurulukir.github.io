@@ -136,11 +136,13 @@ description: Ozgur Ulukir — developer building developer tools, CLI utilities,
             if (feedback) feedback.textContent = 'Copied!';
             btn.classList.add('copied');
             btn.setAttribute('aria-label', 'Email address copied to clipboard');
+            btn.setAttribute('title', 'Email address copied to clipboard');
             if (status) status.textContent = 'Email address copied to clipboard';
           } else {
             if (feedback) feedback.textContent = 'Failed to copy';
             btn.classList.add('copied');
             btn.setAttribute('aria-label', 'Failed to copy email address');
+            btn.setAttribute('title', 'Failed to copy email address');
             if (status) status.textContent = 'Failed to copy email address';
           }
           clearTimeout(timeout);
@@ -148,6 +150,7 @@ description: Ozgur Ulukir — developer building developer tools, CLI utilities,
             btn.classList.remove('copied');
             if (feedback) feedback.textContent = 'Copy email';
             btn.setAttribute('aria-label', 'Copy email address');
+            btn.setAttribute('title', 'Copy email address');
             if (status) status.textContent = '';
           }, 2000);
         }

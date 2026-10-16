@@ -56,11 +56,13 @@ layout: base.html
               btn.classList.add('copied');
               if (label) label.textContent = 'Copied!';
               btn.setAttribute('aria-label', 'Code snippet copied to clipboard');
+              btn.title = 'Code snippet copied to clipboard';
               if (statusEl) statusEl.textContent = 'Code snippet copied to clipboard';
             } else {
               btn.classList.add('copied');
               if (label) label.textContent = 'Failed';
               btn.setAttribute('aria-label', 'Failed to copy code snippet');
+              btn.title = 'Failed to copy code snippet';
               if (statusEl) statusEl.textContent = 'Failed to copy code snippet';
             }
 
@@ -69,6 +71,7 @@ layout: base.html
               btn.classList.remove('copied');
               if (label) label.textContent = 'Copy';
               btn.setAttribute('aria-label', 'Copy code to clipboard');
+              btn.title = 'Copy code';
               if (statusEl) statusEl.textContent = '';
             }, 2000);
           }
