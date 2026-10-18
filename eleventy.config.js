@@ -134,10 +134,10 @@ export default function (eleventyConfig) {
     md.renderer.rules.fence = function (tokens, idx, options, env, self) {
       const html = defaultFence(tokens, idx, options, env, self);
       // markdown-it's default renderers apply token attrs to <code>, not the
-      // scrollable <pre> container — put tabindex on the <pre> so the
+      // scrollable <pre> container — put tabindex, role, and aria-label on <pre> so the
       // :focus-visible styling in style.css (.post-content pre:focus-visible)
-      // applies. Anchor to the string start: patch only the opening tag.
-      return html.replace(/^<pre([ >])/, '<pre tabindex="0"$1');
+      // applies and screen readers identify the region. Anchor to the string start: patch only the opening tag.
+      return html.replace(/^<pre([ >])/, '<pre tabindex="0" role="region" aria-label="Code snippet"$1');
     };
 
     const defaultCodeBlock =
@@ -148,7 +148,7 @@ export default function (eleventyConfig) {
 
     md.renderer.rules.code_block = function (tokens, idx, options, env, self) {
       const html = defaultCodeBlock(tokens, idx, options, env, self);
-      return html.replace(/^<pre([ >])/, '<pre tabindex="0"$1');
+      return html.replace(/^<pre([ >])/, '<pre tabindex="0" role="region" aria-label="Code snippet"$1');
     };
   });
 
