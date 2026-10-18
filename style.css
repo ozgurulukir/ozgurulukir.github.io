@@ -732,6 +732,41 @@ h2::after {
   display: block;
 }
 
+.code-copy-tooltip {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 6px);
+  background: var(--text);
+  color: var(--bg);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 10;
+}
+
+.code-copy-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 12px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: var(--text) transparent transparent transparent;
+}
+
+.code-copy-btn:hover .code-copy-tooltip,
+.code-copy-btn:focus-visible .code-copy-tooltip,
+.code-copy-btn.copied .code-copy-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .post-content pre {
   background: var(--paper);
   border: 2px solid var(--border);
