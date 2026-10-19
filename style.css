@@ -98,7 +98,8 @@ body {
 }
 
 /* Focus styling */
-main:focus {
+main:focus,
+.site-header[tabindex="-1"]:focus:not(:focus-visible) {
   outline: none;
 }
 
@@ -358,6 +359,7 @@ h2::after {
   padding: 0.15rem 0.75rem;
   font-size: 0.9rem;
   font-weight: 600;
+  box-shadow: 2px 2px 0 var(--border);
 }
 
 .contact-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }

@@ -7,7 +7,7 @@ eleventyExcludeFromCollections: true
   <nav aria-label="Breadcrumb" class="breadcrumb-nav">
     <ol class="breadcrumb-list">
       <li><a href="/">Home</a></li>
-      <li aria-current="page"><span class="sr-only">Current page: </span>Blog</li>
+      <li aria-current="page" title="Blog"><span class="sr-only">Current page: </span>Blog</li>
     </ol>
   </nav>
   <section aria-labelledby="blog-title">
@@ -26,7 +26,7 @@ eleventyExcludeFromCollections: true
       </li>
       {%- endfor %}
       {%- if collections.posts.length == 0 %}
-      <li class="post-item"><p>Nothing here yet.</p></li>
+      <li class="post-item" role="status"><p>Nothing here yet.</p></li>
       {%- endif %}
     </ul>
   </section>

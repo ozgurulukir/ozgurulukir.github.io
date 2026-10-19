@@ -25,6 +25,7 @@ layout: base.html
     (function() {
       const codeBlocks = document.querySelectorAll('.post-content pre');
       codeBlocks.forEach(function(pre, index) {
+        pre.setAttribute('aria-label', 'Code snippet ' + (index + 1));
         const wrapper = document.createElement('div');
         wrapper.className = 'code-block-wrapper';
         pre.parentNode.insertBefore(wrapper, pre);
