@@ -877,6 +877,10 @@ h2::after {
   .post-back-link:focus-visible .back-arrow {
     transform: translateX(-4px);
   }
+  .post-back-link:active {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 var(--accent-fill);
+  }
 }
 
 /* ---- 404: struck-through poster numeral ---- */
@@ -962,6 +966,15 @@ h2::after {
   .notfound-btn:hover,
   .notfound-btn:focus-visible {
     transform: translate(-2px, -2px);
+  }
+  .notfound-btn:active {
+    transform: translate(1px, 1px);
+  }
+  .notfound-btn.primary:active {
+    box-shadow: 2px 2px 0 var(--border);
+  }
+  .notfound-btn.secondary:active {
+    box-shadow: 2px 2px 0 var(--accent-fill);
   }
 }
 
