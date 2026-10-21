@@ -585,6 +585,10 @@ h2::after {
   background: var(--paper);
   box-shadow: inset 4px 0 0 var(--accent);
 }
+.post-item:focus-within {
+  outline: 3px solid var(--accent);
+  outline-offset: -3px;
+}
 .post-item:focus-within a {
   color: var(--accent);
 }
