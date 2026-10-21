@@ -308,6 +308,9 @@ h2::after {
 .card:focus-within {
   box-shadow: 8px 8px 0 var(--accent-fill);
 }
+.card:active {
+  box-shadow: 2px 2px 0 var(--accent-fill);
+}
 .card:focus-within {
   outline: 3px solid var(--accent);
   outline-offset: 3px;
@@ -316,6 +319,9 @@ h2::after {
   .card:hover,
   .card:focus-within {
     transform: translate(-2px, -2px);
+  }
+  .card:active {
+    transform: translate(3px, 3px);
   }
 }
 .card h3 { margin: 0; font-size: 1.05rem; }
@@ -523,13 +529,22 @@ h2::after {
   color: var(--muted);
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
-  transition: color 0.15s ease;
+  gap: 0.35rem;
+  padding: 0.25rem 0.6rem;
+  background: var(--paper);
+  border: 2px solid var(--border);
+  box-shadow: 2px 2px 0 var(--border);
+  transition: color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
 }
 .back-to-top:hover,
 .back-to-top:focus-visible {
   color: var(--accent);
-  text-decoration: underline;
+  border-color: var(--accent);
+  box-shadow: 3px 3px 0 var(--accent);
+  text-decoration: none;
+}
+.back-to-top:active {
+  box-shadow: 1px 1px 0 var(--accent);
 }
 @media (prefers-reduced-motion: no-preference) {
   .back-to-top span {
@@ -538,6 +553,9 @@ h2::after {
   .back-to-top:hover span,
   .back-to-top:focus-visible span {
     transform: translateY(-2px);
+  }
+  .back-to-top:active {
+    transform: translate(1px, 1px);
   }
 }
 
@@ -721,9 +739,13 @@ h2::after {
   background: var(--paper);
 }
 
+.code-copy-btn:active {
+  box-shadow: 1px 1px 0 var(--accent);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .code-copy-btn:active {
-    transform: scale(0.95);
+    transform: translate(1px, 1px);
   }
 }
 
