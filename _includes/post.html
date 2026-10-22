@@ -93,20 +93,26 @@ layout: base.html
           }
         });
 
-        document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && btn.classList.contains('copied')) {
-            const label = btn.querySelector('.code-copy-label');
-            const tooltip = document.getElementById('tooltip-' + index);
-            const statusEl = document.getElementById(statusId);
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          const copiedBtns = document.querySelectorAll('.code-copy-btn.copied');
+          copiedBtns.forEach(function(btn) {
             btn.classList.remove('copied');
+            const label = btn.querySelector('.code-copy-label');
             if (label) label.textContent = 'Copy';
-            if (tooltip) tooltip.textContent = 'Copy snippet';
+            const wrapper = btn.closest('.code-block-wrapper');
+            if (wrapper) {
+              const tooltip = wrapper.querySelector('.code-copy-tooltip');
+              if (tooltip) tooltip.textContent = 'Copy snippet';
+            }
             btn.setAttribute('aria-label', 'Copy code to clipboard');
             btn.title = 'Copy code';
-            if (statusEl) statusEl.textContent = '';
-            clearTimeout(timeout);
-          }
-        });
+            const srStatus = btn.querySelector('[aria-live="polite"]');
+            if (srStatus) srStatus.textContent = '';
+          });
+        }
       });
 
       function fallbackCopy(text, callback) {
