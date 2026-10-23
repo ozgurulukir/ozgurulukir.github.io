@@ -740,12 +740,9 @@ h2::after {
   background: var(--paper);
 }
 
-.code-copy-btn:active {
-  box-shadow: 1px 1px 0 var(--accent);
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .code-copy-btn:active {
+    box-shadow: 1px 1px 0 var(--accent);
     transform: translate(1px, 1px);
   }
 }
