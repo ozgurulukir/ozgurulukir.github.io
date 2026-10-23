@@ -408,15 +408,12 @@ h2::after {
   outline-offset: 2px;
 }
 
-.copy-btn:active {
-  box-shadow: 1px 1px 0 var(--accent);
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .copy-btn {
     transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease, transform 0.1s ease;
   }
   .copy-btn:active {
+    box-shadow: 1px 1px 0 var(--accent);
     transform: translate(1px, 1px);
   }
 }

@@ -73,13 +73,11 @@ layout: base.html
 
             clearTimeout(timeout);
             timeout = setTimeout(function() {
-              btn.classList.remove('copied');
-              if (label) label.textContent = 'Copy';
-              if (tooltip) tooltip.textContent = 'Copy snippet';
-              btn.setAttribute('aria-label', 'Copy code to clipboard');
-              btn.title = 'Copy code';
+              escapeTimeouts.delete(btn);
+              resetCopyButton(btn);
               if (statusEl) statusEl.textContent = '';
             }, 2000);
+            escapeTimeouts.set(btn, timeout);
           }
 
           if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -95,24 +93,36 @@ layout: base.html
 
       });
 
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-          const copiedBtns = document.querySelectorAll('.code-copy-btn.copied');
-          copiedBtns.forEach(function(btn) {
-            btn.classList.remove('copied');
-            const label = btn.querySelector('.code-copy-label');
-            if (label) label.textContent = 'Copy';
-            const wrapper = btn.closest('.code-block-wrapper');
-            if (wrapper) {
-              const tooltip = wrapper.querySelector('.code-copy-tooltip');
-              if (tooltip) tooltip.textContent = 'Copy snippet';
-            }
-            btn.setAttribute('aria-label', 'Copy code to clipboard');
-            btn.title = 'Copy code';
-            const srStatus = btn.querySelector('[aria-live="polite"]');
-            if (srStatus) srStatus.textContent = '';
-          });
+      function resetCopyButton(btn) {
+        btn.classList.remove('copied');
+        const label = btn.querySelector('.code-copy-label');
+        if (label) label.textContent = 'Copy';
+        const wrapper = btn.closest('.code-block-wrapper');
+        if (wrapper) {
+          const tooltip = wrapper.querySelector('.code-copy-tooltip');
+          if (tooltip) tooltip.textContent = 'Copy snippet';
         }
+        btn.setAttribute('aria-label', 'Copy code to clipboard');
+        btn.title = 'Copy code';
+        const srStatus = btn.querySelector('[aria-live="polite"]');
+        if (srStatus) srStatus.textContent = '';
+      }
+
+      const escapeTimeouts = new WeakMap();
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key !== 'Escape') return;
+        e.preventDefault();
+
+        const copiedBtns = document.querySelectorAll('.code-copy-btn.copied');
+        if (copiedBtns.length === 0) return;
+
+        copiedBtns.forEach(function(btn) {
+          const timeout = escapeTimeouts.get(btn);
+          if (timeout) clearTimeout(timeout);
+          escapeTimeouts.delete(btn);
+          resetCopyButton(btn);
+        });
       });
 
       function fallbackCopy(text, callback) {
