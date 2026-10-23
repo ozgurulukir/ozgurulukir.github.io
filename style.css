@@ -604,6 +604,9 @@ h2::after {
   background: var(--paper);
   box-shadow: inset 4px 0 0 var(--accent);
 }
+.post-item:active {
+  box-shadow: inset 8px 0 0 var(--accent-fill);
+}
 .post-item:focus-within {
   outline: 3px solid var(--accent);
   outline-offset: -3px;
@@ -996,7 +999,7 @@ h2::after {
     transform: translate(-2px, -2px);
   }
   .notfound-btn:active {
-    transform: translate(1px, 1px);
+    transform: translate(2px, 2px);
   }
 }
 .notfound-btn.primary:active {
