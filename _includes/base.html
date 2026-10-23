@@ -44,14 +44,24 @@
       <p>© 2026 Ozgur Ulukir · Built with plain HTML &amp; CSS, blog by <a href="https://www.11ty.dev/" target="_blank" rel="noopener noreferrer">Eleventy <svg class="external-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><use href="#external-icon"></use></svg><span class="sr-only">(opens in new tab)</span></a></p>
       <a href="#top" class="back-to-top" aria-label="Back to top of page">Back to top <span aria-hidden="true">↑</span></a>
     </div>
+    <span class="sr-only" role="status" aria-live="polite" aria-atomic="true" id="back-to-top-status"></span>
   </footer>
   <script>
     (function() {
       const backToTop = document.querySelector('.back-to-top');
       const topHeader = document.getElementById('top');
+      const topStatus = document.getElementById('back-to-top-status');
+      let statusTimeout;
       if (backToTop && topHeader) {
         backToTop.addEventListener('click', function() {
           topHeader.focus({ preventScroll: true });
+          if (topStatus) {
+            topStatus.textContent = 'Navigated to top of page';
+            clearTimeout(statusTimeout);
+            statusTimeout = setTimeout(function() {
+              topStatus.textContent = '';
+            }, 3000);
+          }
         });
       }
     })();
