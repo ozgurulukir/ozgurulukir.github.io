@@ -53,7 +53,13 @@
       const topStatus = document.getElementById('back-to-top-status');
       let statusTimeout;
       if (backToTop && topHeader) {
-        backToTop.addEventListener('click', function() {
+        backToTop.addEventListener('click', function(e) {
+          e.preventDefault();
+          const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({
+            top: 0,
+            behavior: prefersReduced ? 'auto' : 'smooth'
+          });
           topHeader.focus({ preventScroll: true });
           if (topStatus) {
             topStatus.textContent = 'Navigated to top of page';

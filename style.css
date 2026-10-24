@@ -188,9 +188,15 @@ a:focus-visible .external-icon,
   border-bottom: 3px solid transparent;
   transition: color 0.15s ease, border-color 0.15s ease;
 }
-.nav-list a:hover {
+.nav-list a:hover,
+.nav-list a:focus-visible {
   color: var(--text);
+  border-bottom-color: var(--accent);
   text-decoration: none;
+}
+.brand:focus-visible {
+  text-decoration: none;
+  color: var(--accent);
 }
 .nav-list a[aria-current="true"],
 .nav-list a[aria-current="page"],
@@ -999,7 +1005,7 @@ h2::after {
     transform: translate(-2px, -2px);
   }
   .notfound-btn:active {
-    transform: translate(1px, 1px);
+    transform: translate(2px, 2px);
   }
 }
 .notfound-btn.primary:active {
@@ -1007,6 +1013,9 @@ h2::after {
 }
 .notfound-btn.secondary:active {
   box-shadow: 2px 2px 0 var(--accent-fill);
+}
+.notfound-btn:focus-visible {
+  outline-offset: 3px;
 }
 
 /* ---- Breadcrumbs ---- */
