@@ -919,6 +919,11 @@ h2::after {
 .post-back-link:active {
   box-shadow: 2px 2px 0 var(--accent-fill);
 }
+@media (prefers-reduced-motion: no-preference) {
+  .post-back-link:active {
+    transform: translate(2px, 2px);
+  }
+}
 
 /* ---- 404: struck-through poster numeral ---- */
 
