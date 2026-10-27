@@ -35,6 +35,7 @@ layout: base.html
         btn.type = 'button';
         btn.className = 'code-copy-btn';
         btn.setAttribute('aria-label', 'Copy code snippet to clipboard');
+        btn.setAttribute('aria-keyshortcuts', 'Escape');
 
         const statusId = 'code-copy-status-' + index;
         btn.setAttribute('aria-describedby', statusId);
@@ -58,15 +59,15 @@ layout: base.html
             if (success) {
               btn.classList.add('copied');
               if (label) label.textContent = 'Copied!';
-              if (tooltip) tooltip.textContent = 'Copied!';
-              btn.setAttribute('aria-label', 'Code snippet copied to clipboard');
-              if (statusEl) statusEl.textContent = 'Code snippet copied to clipboard';
+              if (tooltip) tooltip.textContent = 'Copied! (Esc to clear)';
+              btn.setAttribute('aria-label', 'Code snippet copied to clipboard (Press Escape to clear)');
+              if (statusEl) statusEl.textContent = 'Code snippet copied to clipboard. Press Escape to clear status.';
             } else {
               btn.classList.add('copied');
               if (label) label.textContent = 'Failed';
-              if (tooltip) tooltip.textContent = 'Failed to copy';
-              btn.setAttribute('aria-label', 'Failed to copy code snippet');
-              if (statusEl) statusEl.textContent = 'Failed to copy code snippet';
+              if (tooltip) tooltip.textContent = 'Failed (Esc to clear)';
+              btn.setAttribute('aria-label', 'Failed to copy code snippet (Press Escape to clear)');
+              if (statusEl) statusEl.textContent = 'Failed to copy code snippet. Press Escape to clear status.';
             }
 
             clearTimeout(timeout);
