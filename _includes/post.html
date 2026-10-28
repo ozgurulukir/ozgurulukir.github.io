@@ -35,7 +35,6 @@ layout: base.html
         btn.type = 'button';
         btn.className = 'code-copy-btn';
         btn.setAttribute('aria-label', 'Copy code snippet to clipboard');
-        btn.setAttribute('title', 'Copy code snippet to clipboard');
 
         const statusId = 'code-copy-status-' + index;
         btn.setAttribute('aria-describedby', statusId);
@@ -61,14 +60,12 @@ layout: base.html
               if (label) label.textContent = 'Copied!';
               if (tooltip) tooltip.textContent = 'Copied!';
               btn.setAttribute('aria-label', 'Code snippet copied to clipboard');
-              btn.setAttribute('title', 'Code snippet copied to clipboard');
               if (statusEl) statusEl.textContent = 'Code snippet copied to clipboard';
             } else {
               btn.classList.add('copied');
               if (label) label.textContent = 'Failed';
               if (tooltip) tooltip.textContent = 'Failed to copy';
               btn.setAttribute('aria-label', 'Failed to copy code snippet');
-              btn.setAttribute('title', 'Failed to copy code snippet');
               if (statusEl) statusEl.textContent = 'Failed to copy code snippet';
             }
 
@@ -104,7 +101,6 @@ layout: base.html
           if (tooltip) tooltip.textContent = 'Copy snippet';
         }
         btn.setAttribute('aria-label', 'Copy code snippet to clipboard');
-        btn.setAttribute('title', 'Copy code snippet to clipboard');
         const srStatus = btn.querySelector('[aria-live="polite"]');
         if (srStatus) srStatus.textContent = '';
       }
