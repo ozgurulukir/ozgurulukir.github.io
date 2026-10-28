@@ -625,7 +625,7 @@ h2::after {
   position: relative;
   padding: 1rem;
   border-bottom: 2px solid var(--border);
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 .post-item:hover,
 .post-item:focus-within {
@@ -634,6 +634,11 @@ h2::after {
 }
 .post-item:active {
   box-shadow: inset 8px 0 0 var(--accent-fill);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .post-item:active {
+    transform: translateX(2px);
+  }
 }
 .post-item:focus-within {
   outline: 3px solid var(--accent);
