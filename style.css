@@ -505,6 +505,7 @@ h2::after {
 
 @media (prefers-reduced-motion: reduce) {
   .copy-btn,
+  .code-copy-btn,
   .copy-feedback,
   .code-copy-tooltip,
   .card,
