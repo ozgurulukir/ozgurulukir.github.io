@@ -2,7 +2,7 @@
 layout: base.html
 description: Ozgur Ulukir — developer building developer tools, CLI utilities, and AI agent workflows. Featured projects, skills, and contact.
 ---
-  <section class="hero" aria-labelledby="hero-name">
+  <section class="hero" id="hero" aria-labelledby="hero-name">
     <img class="avatar" src="https://avatars.githubusercontent.com/u/8301000?v=4"
          alt="Portrait of Ozgur Ulukir" width="96" height="96">
     <h1 id="hero-name">Ozgur Ulukir</h1>
@@ -109,9 +109,20 @@ description: Ozgur Ulukir — developer building developer tools, CLI utilities,
 
         if ('IntersectionObserver' in window && sections.length > 0) {
           let activeId = null;
+          const brandLink = document.querySelector('.brand');
+          const heroSection = document.getElementById('hero');
+          const observeTargets = heroSection ? [heroSection].concat(sections) : sections;
+
           function updateActiveNav(id) {
             if (activeId === id) return;
             activeId = id;
+            if (brandLink) {
+              if (id && id !== 'hero') {
+                brandLink.removeAttribute('aria-current');
+              } else {
+                brandLink.setAttribute('aria-current', 'page');
+              }
+            }
             navLinks.forEach(function(link) {
               if (link.hash === '#' + id) {
                 link.setAttribute('aria-current', 'true');
@@ -132,7 +143,7 @@ description: Ozgur Ulukir — developer building developer tools, CLI utilities,
             threshold: 0
           });
 
-          sections.forEach(function(section) {
+          observeTargets.forEach(function(section) {
             observer.observe(section);
           });
         }

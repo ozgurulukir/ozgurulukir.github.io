@@ -336,6 +336,8 @@ h2::after {
 .card h3 { margin: 0; font-size: 1.05rem; }
 .card h3 a { color: var(--text); }
 .card h3 a:hover { color: var(--accent); }
+/* Stretched card link focus is handled cleanly by parent .card:focus-within */
+.card h3 a:focus-visible { outline: none; }
 .card h3 a::after {
   content: "";
   position: absolute;
@@ -655,6 +657,10 @@ h2::after {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+}
+/* Stretched post item link focus is handled cleanly by parent .post-item:focus-within */
+.post-item a:focus-visible {
+  outline: none;
 }
 .post-item a::after {
   content: "";
