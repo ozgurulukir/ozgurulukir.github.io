@@ -507,7 +507,8 @@ h2::after {
   .copy-btn,
   .copy-feedback,
   .code-copy-tooltip,
-  .card {
+  .card,
+  .post-item {
     transition: none;
   }
 }
