@@ -62,7 +62,9 @@ class GraphToVisAdapter {
         font: {
           color: isDimmed ? dimmedFont : colors.color,
           multi: 'html',
-          size: isPrimaryFocus ? 14 : 13,
+          // Atlas görünümünde kadraj sabit ölçekle (~0.62) başladığından etiketler
+          // ekran üzerinde ~10px'de okunur kalsın diye geo modda biraz büyütülür
+          size: isGeo ? (isPrimaryFocus ? 17 : 16) : (isPrimaryFocus ? 14 : 13),
           face: 'Inter, system-ui, sans-serif'
         },
         shadow: isDimmed ? false : {

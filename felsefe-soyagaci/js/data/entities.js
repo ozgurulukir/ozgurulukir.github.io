@@ -393,6 +393,26 @@ const RAW_ENTITIES = Object.freeze({
       "Öfke Üzerine"
     ]
   },
+  "musonios": {
+    "id": "musonios",
+    "name": "Musonius Rufus",
+    "dates": "MS 30 – 101",
+    "era": "helenistik",
+    "eraName": "Helenistik & Roma",
+    "school": "Roma Stoacılığı",
+    "city": "Volsinii (Bolsena) / Roma",
+    "quote": "İnsanlar iyi şeylerden hoşlanmayı öğrenirlerse, kötü şeylerden de nefret ederler.",
+    "summary": "'Roma Sokrates'i' olarak anılır; Epiktetos'un hocasıdır. Felsefenin söz değil eylem olduğunu, ahlakın eğitimle ve alışkanlıkla kazanılan bir pratik olduğunu savundu. Nero ve Vespasian dönemlerinde sürgüne gönderildi.",
+    "concepts": [
+      "Felsefe Bir Pratiktir",
+      "Ahlaki Eğitim",
+      "Sıkıntıya Dayanıklılık",
+      "Kadın Eğitimi Savunusu"
+    ],
+    "works": [
+      "Sözlü Söylemler (Diatribai — öğrenci kayıtları)"
+    ]
+  },
   "epiktetos": {
     "id": "epiktetos",
     "name": "Epiktetos",

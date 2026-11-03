@@ -2,7 +2,7 @@
  * =========================================================================
  * FELSEFE SOYAĞACI — DÜNYA HARİTASI (LEAFLET.JS ENTEGRASYONU)
  * =========================================================================
- * Gerçek dünya haritası üzerinde 78 düşünür ve 136 fikri bağlantının
+ * Gerçek dünya haritası üzerinde 79 düşünür ve 136 fikri bağlantının
  * kavisli jeodezik yaylarla (flight-path arcs) interaktif görselleştirmesi.
  */
 
@@ -12,6 +12,13 @@ const LeafletMapManager = (function () {
   let markersLayer = null;
   let edgesLayer = null;
   let isMapInitialized = false;
+
+  // Karo hata sezgisi: art arda hata, tek başarılı yükleme bile olmadan birikirse
+  // onTileFailure callback'i (yerleşik Atlas motoruna geçiş) bir kez tetiklenir.
+  let tileErrorCount = 0;
+  let tileLoadCount = 0;
+  let tileFailureReported = false;
+  let tileFailureCallback = null;
 
   const TILES = {
     dark: 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
@@ -46,7 +53,7 @@ const LeafletMapManager = (function () {
     return points;
   }
 
-  function init(containerId, onSelectNode) {
+  function init(containerId, onSelectNode, onTileFailure) {
     if (isMapInitialized) return;
     if (typeof L === 'undefined') {
       console.error('[Leaflet Error] Leaflet kütüphanesi yüklenemedi.');
@@ -54,12 +61,15 @@ const LeafletMapManager = (function () {
     }
 
     const isDark = typeof isDarkMode === 'function' ? isDarkMode() : true;
+    tileFailureCallback = typeof onTileFailure === 'function' ? onTileFailure : null;
 
     // Akdeniz / Avrasya odaklı başlangıç görünümü (İskoçya'dan Horasan'a, Kurtuba'dan İskenderiye'ye)
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
     map = L.map(containerId, {
       center: [41.5, 18.0],
       zoom: isMobile ? 3.0 : 3.8,
+      // Kesirli başlangıç zoom'undan tamsayıya sıçramayı önler (zoomIn: 3.8 → 4.8)
+      zoomSnap: 0.25,
       minZoom: 2.8,
       maxZoom: 12,
       zoomControl: false,
@@ -67,11 +77,27 @@ const LeafletMapManager = (function () {
     });
 
     // Zoom kontrolü sayfanın kendi şık yüzen butonları (#zoom-in-btn, #zoom-out-btn) ile yönetilir
+    // Esri karo kullanım şartları gereği atıf gösterilir (konum: sağ alt, temalı stil styles.css'te)
+    L.control
+      .attribution({ position: 'bottomright', prefix: false })
+      .addAttribution(TILES.attribution)
+      .addTo(map);
 
     tileLayer = L.tileLayer(isDark ? TILES.dark : TILES.light, {
       subdomains: 'abcd',
       maxZoom: 19
     }).addTo(map);
+
+    tileLayer.on('tileload', () => {
+      tileLoadCount++;
+    });
+    tileLayer.on('tileerror', () => {
+      tileErrorCount++;
+      if (!tileFailureReported && tileErrorCount >= 3 && tileLoadCount === 0) {
+        tileFailureReported = true;
+        if (tileFailureCallback) tileFailureCallback();
+      }
+    });
 
     edgesLayer = L.layerGroup().addTo(map);
     markersLayer = L.layerGroup().addTo(map);

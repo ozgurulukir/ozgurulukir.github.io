@@ -20,6 +20,9 @@ class PhilosophyGraphDatabase {
 
   _loadAndIndex(entities, relations) {
     for (const [id, entity] of Object.entries(entities)) {
+      if (entity.id !== id) {
+        throw new Error(`[Schema Error] Anahtar ile id alanı eşleşmiyor: anahtar "${id}" ≠ id "${entity.id}"`);
+      }
       PhilosophySchema.validateEntity(entity);
       this._graph.addNode(id, Object.freeze({ ...entity }));
 
@@ -31,12 +34,14 @@ class PhilosophyGraphDatabase {
 
     relations.forEach((rel, idx) => {
       PhilosophySchema.validateRelation(rel);
-      if (this._graph.hasNode(rel.from) && this._graph.hasNode(rel.to)) {
-        this._graph.addEdgeWithKey('edge_' + idx, rel.from, rel.to, {
-          type: rel.type,
-          label: rel.label
-        });
+      // Kopuk kenarı sessizce düşürmek yerine şema katmanıyla tutarlı şekilde durdur
+      if (!this._graph.hasNode(rel.from) || !this._graph.hasNode(rel.to)) {
+        throw new Error(`[Graph Error] İlişki bilinmeyen düşünüre işaret ediyor: "${rel.from}" ➔ "${rel.to}"`);
       }
+      this._graph.addEdgeWithKey('edge_' + idx, rel.from, rel.to, {
+        type: rel.type,
+        label: rel.label
+      });
     });
   }
 

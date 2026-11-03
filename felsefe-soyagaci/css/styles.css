@@ -2,57 +2,77 @@
    1. SEMANTIC THEME TOKENS
    ========================================================================= */
 :root {
-  /* Light Mode: Sıcak Parşömen / Fildişi Akademik Tema */
+  /* Light Mode: Sıcak Parşömen / Fildişi Akademik Tema —
+     oklch/oklab desteklemeyen tarayıcılar (Safari ≤16.3, Chrome ≤110) için rgba fallback.
+     oklch(0 0 0 / a) tam olarak siyah-alfa olduğundan değerler birebir. */
   --bg-canvas: #f8f6f0;
   --bg-island: linear-gradient(
-    in oklab 180deg,
+    180deg,
     rgba(255, 255, 255, 0.9),
     rgba(249, 247, 241, 0.94)
   );
-  --bg-card: oklch(0 0 0 / 0.032);
-  --bg-card-hover: oklch(0 0 0 / 0.062);
+  --bg-card: rgba(0, 0, 0, 0.032);
+  --bg-card-hover: rgba(0, 0, 0, 0.062);
   --bg-input: rgba(255, 255, 255, 0.85);
-  --border-input: oklch(0 0 0 / 0.12);
+  --border-input: rgba(0, 0, 0, 0.12);
   --text-primary: #0f172a;
   --text-secondary: #475569;
   --text-muted: #64748b;
 
   /* Light mode 3-layer shadow recipe */
   --shadow-surface:
-    0px 0px 0px 1px oklch(0 0 0 / 0.07), 0px 8px 24px -4px oklch(0 0 0 / 0.09),
-    0px 2px 6px 0px oklch(0 0 0 / 0.05);
+    0px 0px 0px 1px rgba(0, 0, 0, 0.07), 0px 8px 24px -4px rgba(0, 0, 0, 0.09),
+    0px 2px 6px 0px rgba(0, 0, 0, 0.05);
   --shadow-card:
-    0px 0px 0px 1px oklch(0 0 0 / 0.06), 0px 1px 2px -1px oklch(0 0 0 / 0.06),
-    0px 2px 4px 0px oklch(0 0 0 / 0.04);
+    0px 0px 0px 1px rgba(0, 0, 0, 0.06), 0px 1px 2px -1px rgba(0, 0, 0, 0.06),
+    0px 2px 4px 0px rgba(0, 0, 0, 0.04);
   --shadow-card-hover:
-    0px 0px 0px 1px oklch(0 0 0 / 0.11), 0px 2px 4px -1px oklch(0 0 0 / 0.08),
-    0px 4px 8px 0px oklch(0 0 0 / 0.06);
+    0px 0px 0px 1px rgba(0, 0, 0, 0.11), 0px 2px 4px -1px rgba(0, 0, 0, 0.08),
+    0px 4px 8px 0px rgba(0, 0, 0, 0.06);
 
-  --scrollbar-thumb: oklch(0 0 0 / 0.18);
-  --scrollbar-thumb-hover: oklch(0 0 0 / 0.3);
+  --scrollbar-thumb: rgba(0, 0, 0, 0.18);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.3);
 }
 
 html.dark {
-  /* Dark Mode: Derin Obsidyen & Kehribar Tema */
+  /* Dark Mode: Derin Obsidyen & Kehribar Tema — rgba fallback sürümü
+     (oklch(1 0 0 / a) tam olarak beyaz-alfa olduğundan değerler birebir) */
   --bg-canvas: #050811;
-  --bg-island: linear-gradient(in oklab 180deg, rgba(15, 23, 42, 0.82), rgba(9, 13, 24, 0.88));
-  --bg-card: oklch(1 0 0 / 0.038);
-  --bg-card-hover: oklch(1 0 0 / 0.072);
+  --bg-island: linear-gradient(180deg, rgba(15, 23, 42, 0.82), rgba(9, 13, 24, 0.88));
+  --bg-card: rgba(255, 255, 255, 0.038);
+  --bg-card-hover: rgba(255, 255, 255, 0.072);
   --bg-input: rgba(9, 13, 24, 0.72);
-  --border-input: oklch(1 0 0 / 0.11);
+  --border-input: rgba(255, 255, 255, 0.11);
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
   --text-muted: #94a3b8;
 
   /* Dark mode specular white ring recipe */
   --shadow-surface:
-    0 0 0 1px oklch(1 0 0 / 0.08), 0 12px 32px -8px oklch(0 0 0 / 0.65),
-    0 4px 12px -2px oklch(0 0 0 / 0.45);
-  --shadow-card: 0 0 0 1px oklch(1 0 0 / 0.08), 0 2px 6px 0 oklch(0 0 0 / 0.35);
-  --shadow-card-hover: 0 0 0 1px oklch(1 0 0 / 0.14), 0 4px 12px 0 oklch(0 0 0 / 0.45);
+    0 0 0 1px rgba(255, 255, 255, 0.08), 0 12px 32px -8px rgba(0, 0, 0, 0.65),
+    0 4px 12px -2px rgba(0, 0, 0, 0.45);
+  --shadow-card: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 2px 6px 0 rgba(0, 0, 0, 0.35);
+  --shadow-card-hover: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 4px 12px 0 rgba(0, 0, 0, 0.45);
 
-  --scrollbar-thumb: oklch(1 0 0 / 0.15);
-  --scrollbar-thumb-hover: oklch(1 0 0 / 0.28);
+  --scrollbar-thumb: rgba(255, 255, 255, 0.15);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.28);
+}
+
+/* Modern tarayıcılar: yalnızca oklab interpolasyonlu island gradient'i.
+   (Diğer oklch değerleri rgba fallback'leriyle birebir olduğundan ayrıca
+   tanımlanmaz — tek kaynak rgba tabanı kalır.) */
+@supports (background: linear-gradient(in oklab 0deg, red, red)) {
+  :root {
+    --bg-island: linear-gradient(
+      in oklab 180deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(249, 247, 241, 0.94)
+    );
+  }
+
+  html.dark {
+    --bg-island: linear-gradient(in oklab 180deg, rgba(15, 23, 42, 0.82), rgba(9, 13, 24, 0.88));
+  }
 }
 
 /* Özel Kaydırma Çubuğu */
@@ -77,13 +97,14 @@ html.dark {
   color: inherit;
 }
 
-/* Tuval (Canvas) atmosferi: Açık ve Koyu Mod Duyarlı */
+/* Tuval (Canvas) atmosferi: Açık ve Koyu Mod Duyarlı —
+   fallback rgba sürümü (oklch tonlarının yaklaşık karşılıkları, dekoratif katman) */
 .canvas-atmosphere {
   background-color: var(--bg-canvas);
   background-image:
-    radial-gradient(circle at 50% 18%, oklch(0.88 0.05 82 / 0.45), transparent 62%),
-    radial-gradient(circle at 18% 82%, oklch(0.88 0.04 255 / 0.3), transparent 55%),
-    radial-gradient(oklch(0 0 0 / 0.075) 1px, transparent 1px);
+    radial-gradient(circle at 50% 18%, rgba(245, 207, 154, 0.45), transparent 62%),
+    radial-gradient(circle at 18% 82%, rgba(174, 196, 238, 0.3), transparent 55%),
+    radial-gradient(rgba(0, 0, 0, 0.075) 1px, transparent 1px);
   background-size:
     100% 100%,
     100% 100%,
@@ -91,9 +112,23 @@ html.dark {
 }
 html.dark .canvas-atmosphere {
   background-image:
-    radial-gradient(circle at 50% 18%, oklch(0.24 0.05 265 / 0.45), transparent 62%),
-    radial-gradient(circle at 18% 82%, oklch(0.22 0.05 75 / 0.22), transparent 55%),
-    radial-gradient(oklch(1 0 0 / 0.07) 1px, transparent 1px);
+    radial-gradient(circle at 50% 18%, rgba(43, 45, 85, 0.45), transparent 62%),
+    radial-gradient(circle at 18% 82%, rgba(90, 72, 38, 0.22), transparent 55%),
+    radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+}
+@supports (color: oklch(51% 0.1 30)) and (background: linear-gradient(in oklab 0deg, red, red)) {
+  .canvas-atmosphere {
+    background-image:
+      radial-gradient(circle at 50% 18%, oklch(0.88 0.05 82 / 0.45), transparent 62%),
+      radial-gradient(circle at 18% 82%, oklch(0.88 0.04 255 / 0.3), transparent 55%),
+      radial-gradient(oklch(0 0 0 / 0.075) 1px, transparent 1px);
+  }
+  html.dark .canvas-atmosphere {
+    background-image:
+      radial-gradient(circle at 50% 18%, oklch(0.24 0.05 265 / 0.45), transparent 62%),
+      radial-gradient(circle at 18% 82%, oklch(0.22 0.05 75 / 0.22), transparent 55%),
+      radial-gradient(oklch(1 0 0 / 0.07) 1px, transparent 1px);
+  }
 }
 
 .vis-network:focus {
@@ -392,4 +427,26 @@ html:not(.dark) .leaflet-control-zoom a {
   background: rgba(255, 255, 255, 0.9) !important;
   color: #0f172a !important;
   border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Esri karo atfı (kullanım şartı) — sağ alt zoom araç çubuğunun soluna hizalanır */
+.leaflet-control-attribution {
+  background: rgba(15, 23, 42, 0.6) !important;
+  color: #cbd5e1 !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 9px !important;
+  padding: 1px 6px !important;
+  border-radius: 6px 0 0 0 !important;
+  margin-right: 4.75rem !important;
+  backdrop-filter: blur(6px);
+}
+.leaflet-control-attribution a {
+  color: #f8fafc !important;
+}
+html:not(.dark) .leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.75) !important;
+  color: #334155 !important;
+}
+html:not(.dark) .leaflet-control-attribution a {
+  color: #0f172a !important;
 }

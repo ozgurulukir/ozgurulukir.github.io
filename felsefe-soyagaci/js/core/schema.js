@@ -22,7 +22,8 @@ const PhilosophySchema = (function() {
   const VALID_RELATION_TYPES = ['master', 'influence'];
 
   function validateEntity(entity) {
-    const required = ['id', 'name', 'dates', 'era', 'school', 'city', 'summary'];
+    // quote/eraName: çekmece (detay paneli) korumasız kullanır; city: hem şema hem UI
+    const required = ['id', 'name', 'dates', 'era', 'eraName', 'school', 'city', 'quote', 'summary'];
     for (const field of required) {
       if (!entity[field]) {
         throw new Error(`[Schema Error] Filozof kaydında eksik zorunlu alan: ${field} (id: ${entity.id})`);

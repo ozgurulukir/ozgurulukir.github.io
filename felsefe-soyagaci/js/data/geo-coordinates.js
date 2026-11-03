@@ -2,12 +2,12 @@
  * =========================================================================
  * FELSEFE SOYAĞACI — COĞRAFİ KOORDİNATLAR & DÜNYA HARİTASI MOTORU
  * =========================================================================
- * 78 düşünürün tarihsel kent koordinatları, Mercator izdüşüm projeksiyonu,
- * çoklu düğüm kümeleme (jittering) ve Vis.js canvas harita arka planı.
+ * 79 düşünürün tarihsel kent koordinatları, Mercator izdüşüm projeksiyonu,
+ * çoklu düğüm kümeleme (jittering) ve Vis.js canvas Atlas harita motoru.
  */
 
 const PhilosophyGeo = (function () {
-  // 78 Düşünürün Doğum/Etkinlik Kent Koordinatları [Enlem, Boylam]
+  // 79 Düşünürün Doğum/Etkinlik Kent Koordinatları [Enlem, Boylam]
   const PHILOSOPHER_COORDS = Object.freeze({
     // İyonya & Antik Yunan
     thales: [37.53, 27.28], // Miletos
@@ -33,6 +33,7 @@ const PhilosophyGeo = (function () {
     lucretius: [41.90, 12.49], // Roma
     seneca: [37.88, -4.78], // Cordoba / Roma
     epiktetos: [37.92, 29.12], // Hierapolis (Pamukkale)
+    musonios: [42.65, 11.98], // Volsinii (Bolsena, İtalya)
     aurelius: [41.90, 12.49], // Roma
     pyrrhon: [37.89, 21.37], // Elis (Mora Yarımadası)
     sextus: [31.20, 29.91], // İskenderiye
@@ -132,15 +133,39 @@ const PhilosophyGeo = (function () {
         const base = projectRaw(item.lat, item.lng);
         if (count === 1) {
           positions[item.id] = base;
-        } else {
-          // Çoklu filozoflar için dairesel takımyıldız açılımı
-          const angle = (2 * Math.PI * idx) / count - Math.PI / 2;
-          const radius = count > 3 ? 56 : (count === 2 ? 38 : 46);
-          positions[item.id] = {
-            x: Math.round(base.x + Math.cos(angle) * radius),
-            y: Math.round(base.y + Math.sin(angle) * radius)
-          };
+          return;
         }
+        // Çoklu filozoflar için dairesel takımyıldız açılımı.
+        // Kutu genişliği ~140px olduğundan yarıçaplar okunabilirliğe göre seçilir;
+        // büyük kümeler (Atina gibi) iki eş merkezli halkaya yayılır.
+        let ring, ringIdx, ringCount;
+        if (count <= 5) {
+          ring = count === 2 ? 64 : 78;
+          ringIdx = idx;
+          ringCount = count;
+        } else if (count <= 10) {
+          ring = 96;
+          ringIdx = idx;
+          ringCount = count;
+        } else {
+          const firstRing = Math.ceil(count / 2);
+          if (idx < firstRing) {
+            ring = 90;
+            ringIdx = idx;
+            ringCount = firstRing;
+          } else {
+            ring = 170;
+            ringIdx = idx - firstRing;
+            ringCount = count - firstRing;
+          }
+        }
+        // Dış halkayı yarım adım döndürerek iç halkanın boşluklarına yerleştir
+        const angle = (2 * Math.PI * ringIdx) / ringCount - Math.PI / 2
+          + (ring > 100 ? Math.PI / ringCount : 0);
+        positions[item.id] = {
+          x: Math.round(base.x + Math.cos(angle) * ring),
+          y: Math.round(base.y + Math.sin(angle) * ring)
+        };
       });
     }
 
@@ -262,7 +287,7 @@ const PhilosophyGeo = (function () {
     ctx.setLineDash([]);
 
     // 2. Kıyı Şeritleri & Kıta Hatları
-    ctx.strokeStyle = isDark ? 'rgba(251, 191, 36, 0.30)' : 'rgba(180, 83, 9, 0.35)';
+    ctx.strokeStyle = isDark ? 'rgba(251, 191, 36, 0.45)' : 'rgba(180, 83, 9, 0.5)';
     ctx.fillStyle = isDark ? 'rgba(30, 41, 59, 0.45)' : 'rgba(241, 245, 249, 0.65)';
     ctx.lineWidth = 1.8;
 
@@ -279,7 +304,7 @@ const PhilosophyGeo = (function () {
     }
 
     // 3. Bölge & Deniz İsimleri
-    ctx.fillStyle = isDark ? 'rgba(226, 232, 240, 0.22)' : 'rgba(71, 85, 105, 0.28)';
+    ctx.fillStyle = isDark ? 'rgba(226, 232, 240, 0.32)' : 'rgba(71, 85, 105, 0.35)';
     ctx.textAlign = 'center';
     for (const r of REGION_LABELS) {
       const pos = projectRaw(r.lat, r.lng);

@@ -2,7 +2,7 @@
 title: "Felsefe Soyağacı: İzole Biyografilerden Entelektüel Silsileye"
 date: 2026-11-02
 lang: tr
-description: "Filozoflar tarihin takvim yapraklarına serpiştirilmiş yalnız adalar değil; usta-çırak bağlarıyla ve fikir miraslarıyla birbirine kenetlenen devasa bir soyağacının dallarıdır. 78 düşünür ve 136 bağlantıyla kurduğumuz interaktif felsefe soyağacının hikâyesi."
+description: "Filozoflar tarihin takvim yapraklarına serpiştirilmiş yalnız adalar değil; usta-çırak bağlarıyla ve fikir miraslarıyla birbirine kenetlenen devasa bir soyağacının dallarıdır. 79 düşünür ve 136 bağlantıyla kurduğumuz interaktif felsefe soyağacının hikâyesi."
 ---
 
 Klasik bir felsefe tarihi kitabını açtığınızda ya da ansiklopedi maddeleri arasında dolaştığınızda, düşünürler çoğunlukla kendi tekil hücrelerine hapsedilmiş olarak karşınıza çıkar: *"Immanuel Kant, 1724'te Königsberg'de doğdu, üç büyük eleştiri kaleme aldı ve 1804'te aynı şehirde öldü."*
@@ -53,7 +53,7 @@ Bunun en çarpıcı örneğini Aristoteles kökünde görürüz:
 
 Bu soyağacını dijital ortamda hayata geçirirken statik bir resim ya da hantal bir tablo yerine; ilişkileri anlık olarak hesaplanan, çift motorlu (**Vis.js & Leaflet.js**) zengin bir graf modeli kurguladık:
 
-1. **Düğümler (78 Düşünür):** Antik Çağ'dan 20. yüzyıla kadar 6 ana dönem altında renk kodlu düğümler. Her düşünürün yaşam tarihleri, felsefi ekolü, doğum/etkinlik kenti, temel kavramları, başyapıtları ve tarihteki rolü kendi kartında taşınır.
+1. **Düğümler (79 Düşünür):** Antik Çağ'dan 20. yüzyıla kadar 6 ana dönem altında renk kodlu düğümler. Her düşünürün yaşam tarihleri, felsefi ekolü, doğum/etkinlik kenti, temel kavramları, başyapıtları ve tarihteki rolü kendi kartında taşınır.
 2. **Kenarlar (136 Yönlü Bağlantı):** Soyağacındaki akışı sağlayan iki temel ilişki türü hem ağaç hem harita modunda belirgin görsel ayrımlarla modellenmiştir:
    * **Hoca – Öğrenci İlişkisi (Kesintisiz Altın Çizgi):** Doğrudan usta-çırak bağını, akademik danışmanlıkları ve okul silsilesini gösterir (örneğin Parmenides ➔ Zenon, Sokrates ➔ Platon ➔ Aristoteles, Fichte ➔ Schelling, Brentano ➔ Husserl ➔ Heidegger).
    * **Entelektüel Etki (Kesikli Mavi Çizgi):** Çağlar ve kıtalar ötesine uzanan kavramsal beslenmeleri, metin şerhlerini ve felsefi esinlenmeleri gösterir (örneğin Aristoteles ➔ İbn Sînâ, İbn Rüşd ➔ Thomas Aquinas, Spinoza ➔ Deleuze).
