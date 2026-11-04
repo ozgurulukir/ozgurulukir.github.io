@@ -75,8 +75,6 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy("style.css");
   eleventyConfig.addPassthroughCopy("favicon.svg");
-  eleventyConfig.addPassthroughCopy("felsefe-soyagaci/css");
-  eleventyConfig.addPassthroughCopy("felsefe-soyagaci/js");
 
   eleventyConfig.amendLibrary("md", (md) => {
     const defaultLinkOpen =
