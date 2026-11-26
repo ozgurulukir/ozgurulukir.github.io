@@ -1,16 +1,8 @@
 import { DateTime } from "luxon";
 
-const readingTimeCache = new Map();
-
 function calculateReadingTime(content, lang = "en") {
   if (!content) {
     return lang === "tr" ? "1 dk okuma" : "1 min read";
-  }
-
-  const key = `${lang}\u0000${content}`;
-  const cached = readingTimeCache.get(key);
-  if (cached !== undefined) {
-    return cached;
   }
 
   let wordCount = 0;
@@ -40,17 +32,15 @@ function calculateReadingTime(content, lang = "en") {
   }
 
   const mins = Math.max(1, Math.ceil(wordCount / 200));
-  const result = lang === "tr" ? `${mins} dk okuma` : `${mins} min read`;
-  readingTimeCache.set(key, result);
-  return result;
+  return lang === "tr" ? `${mins} dk okuma` : `${mins} min read`;
 }
 
 export default function (eleventyConfig) {
   // Bot journal and planning notes are not site content.
   eleventyConfig.ignores.add(".Jules");
   eleventyConfig.ignores.add("_plan");
-  eleventyConfig.ignores.add(".commandcode");
   eleventyConfig.ignores.add(".Enchanter");
+  eleventyConfig.ignores.add("README.md");
 
   eleventyConfig.addCollection("posts", (collectionApi) =>
     collectionApi
@@ -75,6 +65,7 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy("style.css");
   eleventyConfig.addPassthroughCopy("favicon.svg");
+  eleventyConfig.addPassthroughCopy("js");
 
   eleventyConfig.amendLibrary("md", (md) => {
     const defaultLinkOpen =
