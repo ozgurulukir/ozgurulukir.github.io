@@ -1,0 +1,14 @@
+{
+  "name": "Ozgur Ulukir",
+  "handle": "ozgurulukir",
+  "url": "https://ozgurulukir.github.io",
+  "email": "ozgur.ulukir@gmail.com",
+  "description": "Ozgur Ulukir — developer building developer tools, CLI utilities, and AI agent workflows. Featured projects, skills, and contact.",
+  "nav": [
+    { "label": "About", "href": "/#about" },
+    { "label": "Projects", "href": "/#projects" },
+    { "label": "Skills", "href": "/#skills" },
+    { "label": "Blog", "href": "/blog/" },
+    { "label": "Contact", "href": "/#contact" }
+  ]
+}
